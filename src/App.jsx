@@ -1,5 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import PatentSearchPage from './PatentSearchPage';
 import './styles/App.css';
 import PhasePlotPage from './PhasePlotPage';

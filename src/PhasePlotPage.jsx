@@ -23,7 +23,7 @@ const PhasePlotPage = () => {
 
     useEffect(() => {
         fetchPhaseData();
-    }, []);
+    }, [fetchPhaseData]);
 
     return (
         <div className='phase_plot_container'>

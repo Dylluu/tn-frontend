@@ -20,7 +20,7 @@ const SearchBar = (props) => {
                 className='search_bar_input'
             />
             <button
-                onClick={handleSearch}
+                onClick={() => handleSearch()}
                 disabled={keyword === ''}
             >
                 Search

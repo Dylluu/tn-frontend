@@ -46,3 +46,37 @@
     justify-content: center;
     width: 90vw;
 }
+
+.page_number_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.page_number_inner_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 250px;
+    width: fit-content;
+}
+
+.page_number {
+    cursor: pointer;
+    text-align: center;
+    margin: 0px 5px 0px 5px;
+    min-width: 20px;
+    padding: 3px;
+}
+
+.page_number_selector_buttons {
+    cursor: pointer;
+    padding: 3px;
+}
+
+#page_number_selected {
+    background-color: lightgray;
+}

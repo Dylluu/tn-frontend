@@ -45,7 +45,7 @@ const PageSelector = (props) => {
             await handleSearch(pageNum - 1);
             window.scrollTo(0, 0);
         }
-    }, [pageNum]);
+    }, [pageNum, handleSearch]);
 
     const nextPageButton = useCallback(async () => {
         if (pageNum < (Math.ceil(totalResults / 10))) {
@@ -53,7 +53,7 @@ const PageSelector = (props) => {
             await handleSearch(pageNum + 1);
             window.scrollTo(0, 0);
         }
-    }, [pageNum]);
+    }, [pageNum, handleSearch]);
 
     const pageNumberButton = useCallback(async (pageNumber) => {
         if (pageNumber !== '...') {
@@ -61,11 +61,7 @@ const PageSelector = (props) => {
             await handleSearch(pageNumber);
             window.scrollTo(0, 0);
         }
-    }, [setPageNum]);
-
-    if (totalResults < 11) {
-        return null;
-    }
+    }, [setPageNum, handleSearch]);
 
     return (
         <div className="page_number_container">

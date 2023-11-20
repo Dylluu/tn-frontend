@@ -15,10 +15,11 @@ const PatentSearchPage = () => {
     // useState to hold current page number
     const [pageNum, setPageNum] = useState(1);
 
-    // function to handle backend fetch based on inputted keyword(s)
+    // function to handle backend fetch based on inputted keyword(s) and pagination
     const handleSearch = useCallback(async (page = 1) => {
         try {
-            const response = await fetch(`${import.meta.env.VITE_URL}/api/?query=${keyword}&page=${page}`);
+            const url = `${import.meta.env.VITE_URL}/api/?query=${keyword}&page=${page}`;
+            const response = await fetch(url);
             if (!response) {
                 throw new Error('No response');
             }
@@ -31,7 +32,7 @@ const PatentSearchPage = () => {
         } catch (error) {
             console.error('An error occurred in handleSearch:', error);
         }
-    }, [setResults, keyword]);
+    }, [setResults, keyword, pageNum]);
 
     return (
         <div>
@@ -41,7 +42,7 @@ const PatentSearchPage = () => {
                     setKeyword={setKeyword}
                     handleSearch={handleSearch}
                 />
-                {results.query_results.length > 0 && results.total_count > 0 && (
+                {results.total_count > 0 && (
                     <span className='results_count'>
                         Found {results.total_count} results
                     </span>
@@ -52,7 +53,7 @@ const PatentSearchPage = () => {
                     results={results.query_results}
                 />
             </div>
-            {results.query_results.length > 0 && results.total_count > 0 && (
+            {results.total_count > 10 && (
                 <PageSelector
                     totalResults={results.total_count}
                     pageNum={pageNum}

@@ -1,0 +1,48 @@
+.main_container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    padding-top: 40px;
+}
+
+.search_container {
+    /* border: solid 1px red; */
+    align-items: center;
+    border-bottom: solid 1px grey;
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    position: relative;
+    width: 90vw;
+}
+
+.search_bar_container {
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+}
+
+.search_bar_input {
+    width: 300px;
+}
+
+.results_count {
+    bottom: 5px;
+    left: 0;
+    position: absolute
+}
+
+.results_table_container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.phase_plot_container {
+    align-items: center;
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    width: 90vw;
+}

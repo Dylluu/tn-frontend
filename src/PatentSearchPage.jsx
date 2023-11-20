@@ -15,8 +15,12 @@ const PatentSearchPage = () => {
     // useState to hold current page number
     const [pageNum, setPageNum] = useState(1);
 
+    // useState to hold loading status
+    const [loading, setLoading] = useState(false);
+
     // function to handle backend fetch based on inputted keyword(s) and pagination
     const handleSearch = useCallback(async (page = 1) => {
+        setLoading(true);
         try {
             const url = `${import.meta.env.VITE_URL}/api/?query=${keyword}&page=${page}`;
             const response = await fetch(url);
@@ -32,7 +36,8 @@ const PatentSearchPage = () => {
         } catch (error) {
             console.error('An error occurred in handleSearch:', error);
         }
-    }, [setResults, keyword, pageNum]);
+        setLoading(false);
+    }, [setResults, keyword]);
 
     return (
         <div>
@@ -42,9 +47,14 @@ const PatentSearchPage = () => {
                     setKeyword={setKeyword}
                     handleSearch={handleSearch}
                 />
-                {results.total_count > 0 && (
-                    <span className='results_count'>
+                {results.total_count > 0 && !loading && (
+                    <span className='res_message'>
                         Found {results.total_count} results
+                    </span>
+                )}
+                {loading && (
+                    <span className='res_message'>
+                        Loading...
                     </span>
                 )}
             </div>

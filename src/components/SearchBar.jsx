@@ -16,6 +16,7 @@ const SearchBar = (props) => {
                 type='text'
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
+                onKeyDown={(e) => {if (e.key === 'Enter') {handleSearch()}}}
                 placeholder='Search by keyword(s)'
                 className='search_bar_input'
             />
